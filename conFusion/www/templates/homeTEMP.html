@@ -1,4 +1,6 @@
 <ion-view view-title="Ristorante con Fusion">
+
+
   <ion-content>
     <div class="card">
       <div class="item item-divider">
@@ -6,24 +8,37 @@
         <span class="badge badge-assertive">{{dish.label}}</span>
       </div>
       <div class="item item-thumbnail-left item-text-wrap">
-        <img ng-src="{{baseURL+dish.image}}" alt="Uthappizza">
+        <img ng-src="{{baseURL+dish.image}}" alt="{{baseUrl+dish.name}}">
         <h2>{{dish.name}}
-          <span class="badge">{{dish.price | currency}}</span></h2>
-        <p>{{dish.description}}</p>
+          <span class="badge">{{dish.price | currency}}</span>
+          <p>{{dish.description}}</p>
+        </h2>
+
+
       </div>
+
     </div>
+
+
+
     <div class="card">
+      <!--header-->
       <div class="item item-divider">
         This Month's Promotions
         <span class="badge badge-assertive">{{promotion.label}}</span>
       </div>
+      <!--add image-->
       <div class="item item-thumbnail-left item-text-wrap">
-        <img ng-src="{{baseURL+promotion.image}}" alt="{{promotion.name}}">
-        <h2>{{promotion.name}}
-        <span class="badge">{{promotion.price | currency}}</span></h2>
-        <p>{{promotion.description}}</p>
+      <img ng-src="{{baseURL+promotion.image}}" alt="{{baseURL+promotion.name}}">
+      <span class="badge">{{promotion.price | currency}}</span>
+        <p>{{promotion.description}}/p>
+
       </div>
+
+
     </div>
+
+
     <div class="card">
       <div class="item item-thumbnail-left item-text-wrap">
         <img ng-src="{{baseURL+leader.image}}" alt="{{leader.name}}">
@@ -32,7 +47,10 @@
         <p>{{leader.description}}</p>
       </div>
 
-
     </div>
+
+
   </ion-content>
+
+
 </ion-view>

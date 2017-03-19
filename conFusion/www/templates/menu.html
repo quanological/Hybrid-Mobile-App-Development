@@ -1,8 +1,31 @@
 <ion-view view-title="Menu">
+  <!--TABS-->
+  <div class="tabs-striped tabs-color-royal">
+    <ul class="tabs" role="tablist">
+
+      <!--Dissected from menu.html from confusion-->
+      <li role="presentation" ng-class="{active:isSelected(1)}" class="tab-item">
+        <a ng-click="select(1)" aria-controls="all menu" role="tab">The Menu</a></li>
+      <li role="presentation"
+          ng-class="{active:isSelected(2)}" class="tab-item">
+        <a ng-click="select(2)" aria-controls="appetizers" role="tab">Appetizers</a></li>
+      <li role="presentation" ng-class="{active:isSelected(3)}" class="tab-item">
+        <a ng-click="select(3)" aria-controls="mains" role="tab">Mains</a></li>
+      <li role="presentation" ng-class="{active:isSelected(4)}" class="tab-item">
+        <a ng-click="select(4)" aria-controls="desserts" role="tab">Desserts</a></li>
+    </ul>
+  </div>
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="dish in Dishes" href="#/app/menu/{{dish.id}}">
-        {{dish.name}}
+      <!--item-thumbnail-left is defined on ion-item-->
+      <ion-item ng-repeat="dish in dishes | filter:{category: filtText}" href="#/app/menu/{{dish.id}}"
+                class="item item-thumbnail-left">
+        <img ng-src="{{baseURL+dish.image}}">
+        <h2>{{dish.name}}
+          <span style="font-size:75%">{{dish.price | currency}}</span>
+          <span class="badge badge-assertive">{{dish.label}}</span>
+        </h2>
+        <p>{{dish.description}}</p>
       </ion-item>
     </ion-list>
   </ion-content>
