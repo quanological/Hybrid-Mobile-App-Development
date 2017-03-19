@@ -1,9 +1,5 @@
-/*angular.module('conFusion, ['ionic', 'conFusion.controllers', 'conFusion.services'])
- .run(function($ionicPlatform)) {
- $ionicPlatform.ready(function() {
- if (windows.cordova && windows.cordova.plugins)
- })
- })*/
+'use strict';
+
 angular.module('conFusion.controllers', [])
   .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 
@@ -34,7 +30,6 @@ angular.module('conFusion.controllers', [])
     };
 
   })
-
 
   .controller('MenuController', ['$scope', 'menuFactory', 'baseURL', function ($scope, menuFactory, baseURL) {
 
@@ -153,6 +148,7 @@ angular.module('conFusion.controllers', [])
   }])
 
   // implement the IndexController and About Controller here
+
   .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', 'baseURL', function ($scope, menuFactory, corporateFactory, baseURL) {
 
     $scope.baseURL = baseURL;
@@ -174,11 +170,10 @@ angular.module('conFusion.controllers', [])
   }])
 
   .controller('AboutController', ['$scope', 'corporateFactory', 'baseURL', function ($scope, corporateFactory, baseURL) {
-
-    //inject baseURL
     $scope.baseURL = baseURL;
     $scope.leaders = corporateFactory.query();
     console.log($scope.leaders);
 
-  }]);
+  }])
 
+;
