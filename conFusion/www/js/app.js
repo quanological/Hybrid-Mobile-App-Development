@@ -82,7 +82,17 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
             controller: 'DishDetailController'
           }
         }
-      });
+      })
+
+      // .state('app.reserve', {
+      //   url: '/reserve',
+      //   views {
+      //     'mainContent' : {
+      //     templateUrl: 'templates/reserve.html',
+      //     controller: reserveController,
+      //     }
+      //   }
+      // });
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');
