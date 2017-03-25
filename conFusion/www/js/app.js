@@ -84,15 +84,17 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
         }
       })
 
-      // .state('app.reserve', {
-      //   url: '/reserve',
-      //   views {
-      //     'mainContent' : {
-      //     templateUrl: 'templates/reserve.html',
-      //     controller: reserveController,
-      //     }
-      //   }
-      // });
+      .state('app.favorites', {
+        url: '/favorites',
+        views: {
+          'mainContent': {
+            templateUrl: 'templates/favorites.html',
+            controller:'FavoritesController'
+          }
+        }
+      })
+
+      //reserve is shown using $ionicModal.show()
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');
