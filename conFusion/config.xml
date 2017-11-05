@@ -12,11 +12,11 @@
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="AutoHideSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="2000" />
     <preference name="FadeSplashScreenDuration" value="2000" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
-    <preference name="AutoHideSplashScreen" value="false" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
@@ -51,6 +51,10 @@
         <splash height="1024" src="resources/ios/splash/Default-Portrait~ipad.png" width="768" />
         <splash height="960" src="resources/ios/splash/Default@2x~iphone.png" width="640" />
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
+        <icon height="1024" src="resources/ios/icon/icon-1024.png" width="1024" />
+        <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
     <engine name="ios" spec="^4.5.3" />
 </widget>

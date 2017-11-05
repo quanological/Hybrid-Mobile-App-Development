@@ -19,11 +19,31 @@ angular.module('conFusion', ['ionic', 'ngCordova', 'conFusion.controllers', 'con
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
-    });
-  $timeout(function () {
-    navigator.splashscreen.hide();
 
-  }, 20000);
+      $timeout(function () {
+        $cordovaSplashscreen.hide();
+
+      }, 20000);
+    });
+
+    $rootScope.$on('loading:show', function () {
+      $ionicLoading.show({
+        template: '<ion-spinner></ion-spinner> Loading....'
+      })
+    });
+
+    $rootScope.$on('loading:hide', function () {
+      $ionicLoading.hide();
+    });
+    $rootScope.$on('$stateChangeStart', function () {
+      console.log('Loading ...');
+      $rootScope.$broadcast('loading:show');
+    });
+    $rootScope.$on('$stateChangeSuccess', function () {
+      console.log('done');
+      $rootScope.$broadcast('loading:hide');
+    });
+
 
   })
 
@@ -84,17 +104,17 @@ angular.module('conFusion', ['ionic', 'ngCordova', 'conFusion.controllers', 'con
         views: {
           'mainContent': {
             templateUrl: 'templates/favorites.html',
-              controller:'FavoritesController',
+            controller: 'FavoritesController',
             resolve: {
-              dishes: ['menuFactory', function(menuFactory) {
+              dishes: ['menuFactory', function (menuFactory) {
                 return menuFactory.query();
               }],
 
               favorites: ['favoriteFactory',
 
-              function(favoriteFactory) {
-                return favoriteFactory.getFavorites();
-              }]
+                function (favoriteFactory) {
+                  return favoriteFactory.getFavorites();
+                }]
 
             }
           }
@@ -108,8 +128,8 @@ angular.module('conFusion', ['ionic', 'ngCordova', 'conFusion.controllers', 'con
             templateUrl: 'templates/dishdetail.html',
             controller: 'DishDetailController',
             resolve: {
-              dish: ['$stateParams', 'menuFactory', function($stateParams, menuFactory) {
-                return menuFactory.get({id:parseInt($stateParams.id,10)});
+              dish: ['$stateParams', 'menuFactory', function ($stateParams, menuFactory) {
+                return menuFactory.get({id: parseInt($stateParams.id, 10)});
               }]
             }
           }
@@ -117,7 +137,7 @@ angular.module('conFusion', ['ionic', 'ngCordova', 'conFusion.controllers', 'con
       })
     ;
 
-      //reserve is shown using $ionicModal.show()
+    //reserve is shown using $ionicModal.show()
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');
